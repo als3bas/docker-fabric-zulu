@@ -1,17 +1,17 @@
 <img src="assets/logo_margins.png" align="center" />
 
-![Docker Image Version (latest semver)](https://img.shields.io/docker/v/als3bas/zulu-purpurmc?sort=semver)
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/als3bas/zulu-purpurmc/latest)
-![Docker Pulls](https://img.shields.io/docker/pulls/als3bas/zulu-purpurmc)
-![](https://img.shields.io/github/license/als3bas/docker-purpurmc-zulu)
+![Docker Image Version (latest semver)](https://img.shields.io/docker/v/als3bas/zulu-fabricmc?sort=semver)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/als3bas/zulu-fabricmc/latest)
+![Docker Pulls](https://img.shields.io/docker/pulls/als3bas/zulu-fabricmc)
+![](https://img.shields.io/github/license/als3bas/docker-fabric-zulu)
 
 ----
 
 # What is this?
 
-This is a docker image for [PurpurMC](https://purpurmc.org) with [Zulu OpenJDK (Debian)](https://www.azul.com/downloads) as java runtime.
+This is a docker image for [FabricMC](https://fabricmc.net/) with [Zulu OpenJDK (Debian)](https://www.azul.com/downloads) as java runtime.
 
-Purpur is _a drop-in replacement for PaperMC servers designed for configurability and new, fun, exciting gameplay features._
+Fabric is a lightweight, experimental modding toolchain for Minecraft.
 
 [Zulu OpenJDK](https://www.azul.com/downloads) _is a free, fully compliant, 100% open-source implementation of the Java SE Platform, Standard Edition._
 
@@ -28,6 +28,7 @@ The only problem is that Zulu depends on a single company (Azul), and if they wa
 * Docker-compose 
 * Preferably Linux, [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) or MacOS.
 * Architecture: amd64 or arm64.
+* 4+ GB of RAM (Depending on the players and mods)
 
 # Creating a docker-compose.yml file
 I prefer to use docker-compose, but you can use the docker cli if you want.
@@ -40,9 +41,9 @@ version: "3.9"
 
 services:
   minecraft:
-    container_name: "mcserver"
-    # image: "als3bas/zulu-purpurmc:1.19"
-    image: "als3bas/zulu-purpurmc:latest"
+    container_name: "fabricserver"
+    # image: "als3bas/zulu-fabricmc:1.19.3"
+    image: "als3bas/zulu-fabricmc:latest"
     # If you want to build the image locally, uncomment this 3 lines and comment the image line above.
     # build: 
     #   context: .
@@ -52,9 +53,6 @@ services:
       - MEMORYSIZE: "1G"
       - PUID: "xxxx"
       - PGID: "xxxx"
-      - PAPERMC_FLAGS : ""
-      - PURPURMC_FLAGS: ""
-      ### if you have problems with spark, you can disable it with this flag "-DPurpur.IReallyDontWantSpark=true" on PURPURMC_FLAGS
     volumes:
       - ./:/data:rw
     ports:
@@ -95,6 +93,11 @@ docker-compose pull
 docker-compose up -d
 ``` 
 
+# Adding mods
+
+It's very easy to add mods to the server, just add the mod file to the `mods` folder and restart the server with `make restart` or `docker-compose restart`. 
+Be careful with the mod versions, they have to be compatible with the fabric version.
+
 # Running the server
 
 ### Run
@@ -131,7 +134,7 @@ make stop
 make down
 
 # build the server
-# useful if you want to update the purpurmc version
+# useful if you want to update the fabric version
 # you won't lose your world, plugins or config files 😉
 make build
 
@@ -153,8 +156,7 @@ make logs
 
 * I can't upload/remove/edit files. [🔎 Click Here](#Running-as-non-root-user)
 * Problems downloading .jar from mojang servers [🔎 Click Here](#Problems-downloading-jar-from-mojang-servers)
-* The server crashes with Spark Profiler Modify the [🔎 docker-compose.yml](#creating-a-docker-composeyml-file)
-  * Add this flag `-DPurpur.IReallyDontWantSpark=true` to the `PURPURMC_FLAGS` environment variable.
+* Adding mods [🔎 Click Here](#Adding-mods)
 
 
 #  Problems downloading .jar from mojang servers

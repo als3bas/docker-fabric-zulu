@@ -9,8 +9,8 @@ services:
     restart: unless-stopped
     environment:
       MEMORYSIZE: "5G"
-      PUID: "1000"
-      PGID: "984"
+      PUID: ""
+      PGID: ""
     volumes:
       - ./minecraft_server:/data:rw
     ports:
