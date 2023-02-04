@@ -2,15 +2,13 @@ version: "3.9"
 
 services:
   minecraft:
-    container_name: "mcserver"
+    container_name: "fabricserver"
     build:
       dockerfile: ./Dockerfile
       context: ./
     restart: unless-stopped
     environment:
-      MEMORYSIZE: "1G"
-      PAPERMC_FLAGS: ""
-      PURPURMC_FLAGS: "-DPurpur.IReallyDontWantSpark=true"
+      MEMORYSIZE: "5G"
       PUID: ""
       PGID: ""
     volumes:

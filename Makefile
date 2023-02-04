@@ -55,7 +55,7 @@ attach: ## 💻 Attach the Minecraft server console ## (Remember to press Ctrl-P
 	echo "Ctrl-P Ctrl-Q only exits"; \
 	echo ""; \
 	echo "Type "help" for help."; \
-	docker attach mcserver;
+	docker attach fabricserver;
 
 .PHONY: logs
 logs: ## 🧻 Show the last 20 logs ## (docker-compose logs --tail 20 -f) 
