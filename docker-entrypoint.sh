@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e
 
+echo "eula=true" > eula.txt
+
 DOCKER_USER='dockeruser'
 DOCKER_GROUP='dockergroup'
 
@@ -20,4 +22,4 @@ if ! id "$DOCKER_USER" >/dev/null 2>&1; then
 fi
 
 export HOME=/home/$DOCKER_USER
-exec gosu $DOCKER_USER:$DOCKER_GROUP java -jar -Xms$MEMORYSIZE -Xmx$MEMORYSIZE $JAVAFLAGS $PURPURMC_FLAGS /opt/minecraft/purpurmc.jar $PAPERMC_FLAGS nogui
+exec gosu $DOCKER_USER:$DOCKER_GROUP java -jar -Xms$MEMORYSIZE -Xmx$MEMORYSIZE $JAVAFLAGS /opt/minecraft/fabric.jar nogui

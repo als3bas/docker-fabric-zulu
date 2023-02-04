@@ -9,3 +9,4 @@ logs/**
 .console_history
 *.json
 *.yml
+.fabric/**
