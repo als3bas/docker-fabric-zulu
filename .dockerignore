@@ -1,0 +1,11 @@
+world*/**
+plugins/**
+logs/**
+versions/**
+cache/**
+config/**
+libraries/**
+logs/**
+.console_history
+*.json
+*.yml
