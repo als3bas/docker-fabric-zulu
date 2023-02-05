@@ -7,13 +7,11 @@
 
 ----
 
-# What is this?
-
-This is a docker image for [FabricMC](https://fabricmc.net/) with [Zulu OpenJDK (Debian)](https://www.azul.com/downloads) as java runtime.
-
-Fabric is a lightweight, experimental modding toolchain for Minecraft.
-
-[Zulu OpenJDK](https://www.azul.com/downloads) _is a free, fully compliant, 100% open-source implementation of the Java SE Platform, Standard Edition._
+# Fabric MC Running on Zulu OpenJDK 
+## What is this?
+* This is a docker image that runs a [Fabric MC](https://fabricmc.net/) server on [Zulu OpenJDK](https://www.azul.com/downloads).
+* Fabric is a lightweight, experimental modding toolchain for Minecraft.
+* [Zulu OpenJDK](https://www.azul.com/downloads) _is a free, fully compliant, 100% open-source implementation of the Java SE Platform, Standard Edition._
 
 **You're free to fork this repo and modify it to your needs.**
 
@@ -34,7 +32,7 @@ The only problem is that Zulu depends on a single company (Azul), and if they wa
 I prefer to use docker-compose, but you can use the docker cli if you want.
 
 > **Warning**
-> Don't forget to change the PUID and PGID envs to run as non-root user.
+> Don't forget to change PUID and PGID envs to run as non-root user.
 
 ```yml
 version: "3.9"
@@ -84,10 +82,12 @@ environment:
 # Update the container
 
 ```sh
+# This command will pull the latest image and restart the container
 make update-container
 ```
 or
 ```sh
+# And this is basically the same
 docker-compose stop
 docker-compose pull
 docker-compose up -d
@@ -95,8 +95,10 @@ docker-compose up -d
 
 # Adding mods
 
-It's very easy to add mods to the server, just add the mod file to the `mods` folder and restart the server with `make restart` or `docker-compose restart`. 
-Be careful with the mod versions, they have to be compatible with the fabric version.
+Adding mods is very easy, just copy them to the `mods` folder and restart the server.
+```sh
+make restart
+```
 
 # Running the server
 
@@ -156,8 +158,6 @@ make logs
 
 * I can't upload/remove/edit files. [🔎 Click Here](#Running-as-non-root-user)
 * Problems downloading .jar from mojang servers [🔎 Click Here](#Problems-downloading-jar-from-mojang-servers)
-* Adding mods [🔎 Click Here](#Adding-mods)
-
 
 #  Problems downloading .jar from mojang servers
 
