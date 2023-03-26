@@ -40,7 +40,7 @@ version: "3.9"
 services:
   minecraft:
     container_name: "fabricserver"
-    # image: "als3bas/zulu-fabricmc:1.19.3"
+    # image: "als3bas/zulu-fabricmc:1.19.4"
     image: "als3bas/zulu-fabricmc:latest"
     # If you want to build the image locally, uncomment this 3 lines and comment the image line above.
     # build: 
