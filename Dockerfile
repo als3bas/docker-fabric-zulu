@@ -3,7 +3,7 @@ FROM azul/zulu-openjdk-debian:21-latest AS build
 LABEL Sebas Álvaro <https://asgg.cl>
 
 ARG TARGETARCH
-ARG MCVERSION=1.21
+ARG MCVERSION=1.21.1
 
 RUN apt-get update && apt-get install -y \
     curl \
