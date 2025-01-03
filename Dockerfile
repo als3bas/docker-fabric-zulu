@@ -1,5 +1,5 @@
 # -- Build ---
-FROM azul/zulu-openjdk-debian:21-latest AS build
+FROM azul/zulu-openjdk-debian:23-latest AS build
 LABEL Sebas Álvaro <https://asgg.cl>
 
 ARG TARGETARCH
@@ -17,7 +17,7 @@ RUN chmod +x /getfabricserver.sh && \
     /getfabricserver.sh ${MCVERSION}
 
 # --- Runtime ---
-FROM azul/zulu-openjdk-debian:21-latest AS runtime
+FROM azul/zulu-openjdk-debian:23-latest AS runtime
 RUN apt-get update && apt-get install -y \
     curl \
     jq \
